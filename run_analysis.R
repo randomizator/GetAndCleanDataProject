@@ -24,7 +24,7 @@ final_data = rbind(test_data, train_data)
 
 
 data_labels = setdiff(colnames(final_data), id_labels)
-melt_data      = melt(final_data, id.vars = id_labels, measure.vars = data_labels)
-tidy_data   = dcast(melt_data, subject + ActivityLabel ~ variable, mean)
+data_melt = melt(final_data, id.vars = id_labels, measure.vars = data_labels)
+data_tidy = dcast(data_melt, subject + ActivityLabel ~ variable, mean)
 
-write.table(tidy_data, file = "./tidy_data.txt")
+write.table(data_tidy, file = "./tidy_data.txt")
